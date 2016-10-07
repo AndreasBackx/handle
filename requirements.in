@@ -1,0 +1,2 @@
+-e git://github.com/spotify/ramlfications.git@v0.2.0-dev#egg=ramlfications
+click==6.6
