@@ -1,0 +1,27 @@
+{% for section in sections %}
+<div class="content-section">
+    <div class="content-info">
+        <h2>{{ section.title }}</h2>
+
+        {% if section.docs %}
+            {% for doc in section.docs %}
+                <p>{{ doc }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% if section.example %}
+        <div class="content-example">
+            {% if section.example.request %}
+                <div class="example-request">
+                    <div class="example-request-method">
+                        {{ section.example.request.method }}
+                    </div>
+                    <div class="example-request-path">
+                        {{ section.example.request.path }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endfor %}

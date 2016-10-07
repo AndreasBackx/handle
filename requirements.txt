@@ -8,8 +8,10 @@
 attrs==16.2.0
 click==6.6
 inflect==0.2.5
+jinja2==2.8
 jsonref==0.1
 markdown2==2.3.1
+MarkupSafe==0.23          # via jinja2
 pyyaml==3.12
 six==1.10.0
 termcolor==1.1.0

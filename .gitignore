@@ -1,6 +1,7 @@
 ### Handle ###
 
 example_docs/
+_build/
 
 # Created by https://www.gitignore.io/api/macos,python,sublimetext
 

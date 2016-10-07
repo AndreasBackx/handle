@@ -1,0 +1,8 @@
+{% if item.items %}
+    {% set items = item.items %}
+    {% include 'sidebar/items.html' %}
+{% else %}
+<a href="#">
+    <li class="sidebar-item">{{ item.title | capitalize }}</li>
+</a>
+{% endif %}
