@@ -1,8 +1,12 @@
+import logging
+
 
 class Item:
 
     def __init__(self, resource_type=None, title=None, docs=None, example=None):
-        print('resource_type', resource_type)
+        logging.debug('resource_type')
+        logging.debug(resource_type)
+
         if resource_type is not None:
             if title is None:
                 title = resource_type.name

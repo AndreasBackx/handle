@@ -1,3 +1,4 @@
 -e git://github.com/spotify/ramlfications.git@v0.2.0-dev#egg=ramlfications
 click==6.6
+jac==0.15.1
 jinja2==2.8
