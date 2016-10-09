@@ -5,9 +5,11 @@
 #    pip-compile --output-file requirements-dev.txt requirements-dev.in
 #
 -e git+git://github.com/spotify/ramlfications.git@v0.2.0-dev#egg=ramlfications
+argh==0.26.2              # via watchdog
 attrs==16.2.0
 beautifulsoup4==4.4.1     # via jac
 click==6.6
+colorlog==2.7.0
 first==2.0.1              # via pip-tools
 inflect==0.2.5
 jac==0.15.1
@@ -16,9 +18,11 @@ jsonref==0.1
 markdown2==2.3.1
 MarkupSafe==0.23          # via jinja2
 ordereddict==1.1          # via jac
+pathtools==0.1.2          # via watchdog
 pip-tools==1.7.0
-pyyaml==3.12
+pyyaml==3.12              # via watchdog
 rjsmin==1.0.12            # via jac
 six==1.10.0               # via jac, pip-tools
 termcolor==1.1.0
+watchdog==0.8.3
 xmltodict==0.10.2

@@ -11,7 +11,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'handle = cli:build'
+            'handle = cli:cli'
         ]
     }
 )

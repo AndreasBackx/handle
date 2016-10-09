@@ -1,4 +1,3 @@
-import logging
 import os
 import shutil
 
@@ -28,10 +27,7 @@ class Handle:
             template
         )
 
-        logging.info('Using the "%s" template...', template)
-        logging.info('Parsing RAML-file...')
         self.root_node = ramlfications.parse(source)
-        logging.info('RAML-file succesfully parsed!')
 
     @property
     def environment(self):
@@ -73,21 +69,15 @@ class Handle:
                     )
                 )
 
-        build_dir = '_build'
+        if os.path.exists(self.BUILD_DIR):
+            shutil.rmtree(self.BUILD_DIR)
 
-        if os.path.exists(build_dir):
-            shutil.rmtree(build_dir)
-            logging.info('Removed "%s" build directory.', build_dir)
-
-        os.makedirs(build_dir + '/static')
-        logging.info('Created build directories.')
+        os.makedirs(self.BUILD_DIR + '/static')
 
         environment = self.environment
         output = environment.get_template('index.html').render(
             sections=sections
         )
 
-        with open(build_dir + '/index.html', 'w') as fh:
+        with open(self.BUILD_DIR + '/index.html', 'w') as fh:
             fh.write(output)
-
-        logging.info('Handled!')
