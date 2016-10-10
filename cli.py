@@ -1,23 +1,8 @@
 import logging.config
-import time
 
 import click
 from handle.handle import Handle
-from watchdog.events import FileSystemEventHandler
-from watchdog.observers import Observer
-
-
-class HandleEventHandler(FileSystemEventHandler):
-
-    def __init__(self, handle, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.handle = handle
-
-    def on_any_event(self, event):
-        super().on_any_event(event)
-        logging.info('Change detected: "%s"...', event.src_path)
-        self.handle.build()
-        logging.info('Project updated.')
+from livereload import Server
 
 
 @click.group()
@@ -79,28 +64,32 @@ def build(context):
 
 
 @cli.command()
+@click.option('--port', default=8000, help='Specify port to use for livereload server.')
+@click.option('--host', default='0.0.0.0', help='Specify host to use for livereload server.')
 @click.pass_context
-def serve(context):
-    logging.info('Spinning up Handle server...')
+def serve(context, port, host):
     handle = Handle(
         source=context.obj['source']
     )
     handle.build()
+    logging.info('Initial files built.')
 
-    event_handler = HandleEventHandler(
-        handle=handle
+    def on_update():
+        logging.info('Change detected...')
+        handle.build()
+        logging.info('Project updated.')
+
+    server = Server()
+    server.watch(handle.template_dir, on_update)
+
+    logging.info(
+        'Spinning up Handle livereload server at "%s:%d"...',
+        host, port
     )
-    observer = Observer()
-    observer.schedule(
-        event_handler,
-        handle.template_dir,
-        recursive=True
+    server.serve(
+        root=handle.BUILD_DIR,
+        port=port,
+        host=host,
+        debug=True
     )
-    observer.start()
-    logging.info('Initial files built and server running.')
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        observer.stop()
-    observer.join()
+    logging.info('Stopping the Handle livereload server...')

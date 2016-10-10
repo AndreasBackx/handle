@@ -1,6 +1,6 @@
 -e git://github.com/spotify/ramlfications.git@v0.2.0-dev#egg=ramlfications
 click==6.6
+colorlog==2.7.0
 jac==0.15.1
 jinja2==2.8
-watchdog==0.8.3
-colorlog==2.7.0
+livereload==2.4.1
