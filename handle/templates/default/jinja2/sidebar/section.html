@@ -1,6 +1,6 @@
-<ul class="sidebar-section">
+<li class="sidebar-section">
     <a href="#">
-        <li>{{ section.title | capitalize }}</li>
-        <li>{% include 'sidebar/items.html' %}</li>
+        <h4>{{ section.title | upper }}</h4>
     </a>
-</ul>
+    {% include 'sidebar/items.html' %}
+</li>

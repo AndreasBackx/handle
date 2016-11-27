@@ -4,3 +4,4 @@ colorlog==2.7.0
 jac==0.15.1
 jinja2==2.8
 livereload==2.4.1
+markdown==2.6.7

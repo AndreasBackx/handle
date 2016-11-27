@@ -6,7 +6,9 @@
 
                 {% if section.docs %}
                     {% for doc in section.docs %}
-                        <p>{{ doc }}</p>
+                        {% if doc %}
+                        {{ doc }}
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>

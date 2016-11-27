@@ -3,7 +3,7 @@
 example_docs/
 _build/
 
-# Created by https://www.gitignore.io/api/macos,python,sublimetext
+# Created by https://www.gitignore.io/api/macos,python,sublimetext,sass
 
 ### macOS ###
 *.DS_Store
@@ -12,11 +12,8 @@ _build/
 
 # Icon must end with two \r
 Icon
-
-
 # Thumbnails
 ._*
-
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
@@ -25,7 +22,6 @@ Icon
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
-
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
@@ -103,7 +99,7 @@ docs/_build/
 # PyBuilder
 target/
 
-# IPython Notebook
+# Jupyter Notebook
 .ipynb_checkpoints
 
 # pyenv
@@ -155,3 +151,8 @@ bh_unicode_properties.cache
 # Sublime-github package stores a github token in this file
 # https://packagecontrol.io/packages/sublime-github
 GitHub.sublime-settings
+
+
+### Sass ###
+.sass-cache/
+*.css.map

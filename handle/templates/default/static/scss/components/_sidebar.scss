@@ -1,0 +1,10 @@
+#sidebar {
+    width: $sidebar-width;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: $grey-white;
+    position: fixed;
+    padding: 16px;
+    box-sizing: border-box;
+}

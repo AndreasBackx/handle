@@ -1,22 +1,33 @@
 import logging
 
+from ramlfications.models.root import Documentation
+from markdown import markdown
+
 
 class Item:
 
-    def __init__(self, resource_type=None, title=None, docs=None, example=None):
-        logging.debug('resource_type')
-        logging.debug(resource_type)
+    def __init__(self, resource=None, title=None, docs=None, example=None):
+        logging.debug('resource')
+        logging.debug(resource)
 
-        if resource_type is not None:
+        self.resource = resource
+
+        if resource is not None:
             if title is None:
-                title = resource_type.name
+                title = resource.display_name
             if docs is None:
-                docs = [resource_type.description]
+                docs = [
+                    markdown(resource.description.raw.strip())
+                ]
 
         if title is None:
             raise ValueError(
-                'A title or resource_type must be given.'
+                'A title or resource must be given.'
             )
+
+        for i, doc in enumerate(docs):
+            if isinstance(doc, Documentation):
+                docs[i] = markdown(doc.content.raw.strip())
 
         self.title = title
         self.docs = docs

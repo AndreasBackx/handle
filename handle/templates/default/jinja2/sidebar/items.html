@@ -1,5 +1,7 @@
+{% if section.items %}
 <ul class="sidebar-items">
-    {% for item in items %}
+    {% for item in section.items %}
         {% include 'sidebar/item.html' %}
     {% endfor %}
 </ul>
+{% endif %}

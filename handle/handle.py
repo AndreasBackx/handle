@@ -1,5 +1,6 @@
 import os
 import shutil
+import traceback
 
 import ramlfications
 from jac import CompressorExtension
@@ -54,30 +55,34 @@ class Handle:
         return env
 
     def build(self):
-        root_section = Section(
-            title=self.root_node.title,
-            docs=self.root_node.documentation
-        )
-
-        sections = [root_section]
-
-        if self.root_node.resource_types:
-            for resource_type in self.root_node.resource_types:
-                sections.append(
-                    Section(
-                        resource_type=resource_type
-                    )
-                )
-
         if os.path.exists(self.BUILD_DIR):
             shutil.rmtree(self.BUILD_DIR)
 
         os.makedirs(self.BUILD_DIR + '/static')
 
         environment = self.environment
-        output = environment.get_template('index.html').render(
-            sections=sections
-        )
-
         with open(self.BUILD_DIR + '/index.html', 'w') as fh:
+            try:
+                root_section = Section(
+                    title=self.root_node.title,
+                    docs=self.root_node.documentation
+                )
+
+                sections = [root_section]
+
+                if self.root_node.resources:
+                    for resource in self.root_node.resources:
+                        if resource.parent is None:
+                            sections.append(
+                                Section(
+                                    resource=resource
+                                )
+                            )
+                output = environment.get_template('index.html').render(
+                    sections=sections
+                )
+            except:
+                output = '<pre>{traceback}</pre>'.format(
+                    traceback=traceback.format_exc().replace('\\n', '<br/>')
+                )
             fh.write(output)
