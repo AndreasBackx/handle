@@ -1,7 +1,6 @@
 import logging
 
 from ramlfications.models.root import Documentation
-from markdown import markdown
 
 
 class Item:
@@ -17,7 +16,7 @@ class Item:
                 title = resource.display_name
             if docs is None:
                 docs = [
-                    markdown(resource.description.raw.strip())
+                    resource.description.html
                 ]
 
         if title is None:
@@ -25,9 +24,10 @@ class Item:
                 'A title or resource must be given.'
             )
 
-        for i, doc in enumerate(docs):
-            if isinstance(doc, Documentation):
-                docs[i] = markdown(doc.content.raw.strip())
+        if docs is not None:
+            for i, doc in enumerate(docs):
+                if isinstance(doc, Documentation):
+                    docs[i] = doc.content.html
 
         self.title = title
         self.docs = docs

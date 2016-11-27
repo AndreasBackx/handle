@@ -7,12 +7,14 @@ from livereload import Server
 
 @click.group()
 @click.option('--verbose', is_flag=True, help='Show verbose logging messages.')
+@click.option('--config', help='Add ramlfications config file.')
 @click.argument('source')
 @click.pass_context
-def cli(context, source, verbose):
+def cli(context, source, config, verbose):
     if context.obj is None:
         context.obj = {}
     context.obj['source'] = source
+    context.obj['config'] = config
     context.obj['verbose'] = verbose
 
     level = 'DEBUG' if verbose else 'INFO'
@@ -69,7 +71,8 @@ def build(context):
 @click.pass_context
 def serve(context, port, host):
     handle = Handle(
-        source=context.obj['source']
+        source=context.obj['source'],
+        config=context.obj['config']
     )
     handle.build()
     logging.info('Initial files built.')

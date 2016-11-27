@@ -16,7 +16,6 @@ jinja2==2.8
 jsonref==0.1
 livereload==2.4.1
 markdown2==2.3.1
-markdown==2.6.7
 MarkupSafe==0.23          # via jinja2
 ordereddict==1.1          # via jac
 pip-tools==1.7.0

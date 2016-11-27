@@ -2,7 +2,7 @@
     {% set items = item.items %}
     {% include 'sidebar/items.html' %}
 {% else %}
-<a href="#">
+<a href="#{{ item.resource.path }}">
     <li class="sidebar-item">{{ item.title | capitalize }}</li>
 </a>
 {% endif %}

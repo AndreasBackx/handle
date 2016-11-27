@@ -2,7 +2,7 @@
     {% for section in sections %}
         <div class="content-section">
             <div class="content-info">
-                <h2>{{ section.title }}</h2>
+                <h2 id="{{ section.resource.path }}">{{ section.title }}</h2>
 
                 {% if section.docs %}
                     {% for doc in section.docs %}
@@ -12,6 +12,18 @@
                     {% endfor %}
                 {% endif %}
             </div>
+            {% for item in section.items %}
+                <h3 id="{{ item.resource.path }}">{{ item.title }}</h3>
+                <h5>{{ item.resource.path }}</h5>
+
+                {% if item.docs %}
+                    {% for doc in item.docs %}
+                        {% if doc %}
+                        {{ doc }}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
             {% if section.example %}
                 <div class="content-example">
                     {% if section.example.request %}

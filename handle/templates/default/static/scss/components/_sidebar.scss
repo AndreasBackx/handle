@@ -7,4 +7,11 @@
     position: fixed;
     padding: 16px;
     box-sizing: border-box;
+    overflow-y: auto;
+
+    li, h4 {
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
 }

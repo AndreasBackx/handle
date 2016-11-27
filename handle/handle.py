@@ -19,8 +19,9 @@ class Handle:
     )
     STATIC_DIR = 'static'
 
-    def __init__(self, source, template='default'):
+    def __init__(self, source, config=None, template='default'):
         self.source = source
+        self.config = config
         self.template = template
         self.template_dir = os.path.join(
             BASE_DIR,
@@ -28,7 +29,10 @@ class Handle:
             template
         )
 
-        self.root_node = ramlfications.parse(source)
+        self.root_node = ramlfications.parse(
+            raml=source,
+            config_file=config
+        )
 
     @property
     def environment(self):

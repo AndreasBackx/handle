@@ -1,4 +1,10 @@
 #content {
     margin-left: $sidebar-width;
     padding: 16px;
+    overflow: auto;
+    position: fixed;
+    box-sizing: border-box;
+    height: 100%;
+    top: 0;
+    right: 0;
 }
