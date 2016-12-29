@@ -1,49 +1,44 @@
 html, body {
     font-family: $font-family;
-    color: $grey-black;
+    color: $grey-dark;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     display: block;
-    margin: 1em 0;
-    font-weight: $weight-light;
-    color: $grey-black;
+    font-weight: $weight-normal;
 
     &.subtitle {
         margin-top: -0.5em;
-        color: $grey-dark;
+        color: $grey;
         font-weight: $weight-light;
     }
 }
 
 h1 {
-    font-size: $size-xlarge;
-    margin-bottom: 32px;
-
-    & + h3 {
-        margin-top: -16px;
-    }
+    font-size: $size-xxlarge;
+    margin-top: 16px;
 }
 
 h2 {
-    font-weight: $weight-normal;
-    font-size: $size-large;
-    margin-bottom: 40px;
+    font-size: $size-xlarge;
+    margin-top: 8px;
 }
 
 h3 {
-    font-size: $size-medium;
-    font-weight: $weight-normal;
+    font-size: $size-large;
 }
 
 h4 {
-    font-size: $size-normal;
-    font-weight: $weight-medium;
+    font-size: $size-medium;
     line-height: 1.5em;
 }
 
+h5 {
+    font-size: $size-normal;
+}
+
 p {
-    padding: 1em 0;
+    padding-top: 14px;
     font-size: $size-normal;
     line-height: 1.5em;
 
@@ -64,7 +59,7 @@ a {
 
 .subscript {
     font-size: $size-xsmall;
-    color: $grey-dark;
+    color: $grey;
 }
 
 em {

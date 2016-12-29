@@ -1,43 +1,52 @@
 <div id="content">
     {% for section in sections %}
-        <div class="content-section">
-            <div class="content-info">
-                <h2 id="{{ section.resource.path }}">{{ section.title }}</h2>
+        <section class="content-section">
+            <div class="content-group">
+                <div class="content-info">
+                    <h1 id="{{ section.resource.path }}">{{ section.title }}</h1>
 
-                {% if section.docs %}
-                    {% for doc in section.docs %}
-                        {% if doc %}
-                        {{ doc }}
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
+                    {% if section.docs %}
+                        {% for doc in section.docs %}
+                            {% if doc %}
+                            {{ doc }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
-            {% for item in section.items %}
-                <h3 id="{{ item.resource.path }}">{{ item.title }}</h3>
-                <h5>{{ item.resource.path }}</h5>
 
-                {% if item.docs %}
-                    {% for doc in item.docs %}
-                        {% if doc %}
-                        {{ doc }}
+            {% for item in section.items %}
+                <div class="content-group">
+                    <div class="content-section-item">
+                        <h2 id="{{ item.resource.path }}">{{ item.title }}</h2>
+
+                        {% if item.docs %}
+                            {% for doc in item.docs %}
+                                {% if doc %}
+                                {{ doc }}
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endfor %}
-            {% if section.example %}
-                <div class="content-example">
-                    {% if section.example.request %}
-                        <div class="example-request">
-                            <div class="example-request-method">
-                                {{ section.example.request.method }}
-                            </div>
-                            <div class="example-request-path">
-                                {{ section.example.request.path }}
-                            </div>
+                    </div>
+
+                    {% if item.example %}
+                        <div class="content-example">
+                            {% if item.example.request %}
+                                <div class="example-request">
+                                    <p>Example request:</p>
+                                    <div class="codeblock">
+                                        <div class="codeblock-header">
+                                            <span class="codeblock-method">{{ item.example.request.method }}</span>
+                                            <span class="codeblock-path">{{ item.example.request.path }}</span>
+                                        </div>
+                                        <pre>{{ item.example.request }}</pre>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                 </div>
-            {% endif %}
-        </div>
+            {% endfor %}
+        </section>
     {% endfor %}
 </div>

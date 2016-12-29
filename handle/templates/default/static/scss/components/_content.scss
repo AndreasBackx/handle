@@ -1,10 +1,82 @@
 #content {
     margin-left: $sidebar-width;
-    padding: 16px;
     overflow: auto;
     position: fixed;
     box-sizing: border-box;
     height: 100%;
     top: 0;
-    right: 0;
+
+    .content-section {
+        background: $grey-dark;
+
+        .content-group {
+            display: table;
+
+            &:last-child {
+                .content-info, .content-section-item {
+                    border-bottom: 1px solid rgba-to-rgb($divider-color, $grey-white);
+                }
+            }
+
+            .content-info, .content-section-item, .content-example {
+                padding: 32px;
+                display: table-cell;
+                box-sizing: border-box;
+            }
+
+            // Left part
+            .content-info, .content-section-item {
+                background: $grey-white;
+                width: $content-width;
+                min-width: $content-width;
+                max-width: $content-width;
+
+                * {
+                    white-space: wrap;
+                }
+            }
+
+            .content-section-item {
+                margin-bottom: 48px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            // Right part
+            .content-example {
+                color: $grey-light;
+                font-weight: $weight-light;
+                width: 100%;
+
+                .codeblock {
+                    background: $grey-darker;
+                    border-radius: 2px;
+
+                    .codeblock-header {
+                        height: 40px;
+                        white-space: normal;
+                        word-break: break-all;
+                        background: $grey-black;
+                        border-top-left-radius: 2px;
+                        border-top-right-radius: 2px;
+                        padding:  0 16px;
+                        line-height: 40px;
+
+                        .codeblock-method {}
+
+                        .codeblock-path {}
+                    }
+
+                    pre {
+                        font-family: monospace;
+                        white-space: normal;
+                        word-break: break-all;
+                        padding: 16px;
+                    }
+                }
+            }
+        }
+    }
 }

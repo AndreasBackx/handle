@@ -1,0 +1,7 @@
+@function rgba-to-rgb($rgba, $base: #fff) {
+  @return mix(rgb(red($rgba), green($rgba), blue($rgba)),
+        $base,
+        alpha($rgba) * 100%
+  )
+}
+

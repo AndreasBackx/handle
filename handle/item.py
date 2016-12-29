@@ -2,36 +2,45 @@ import logging
 
 from ramlfications.models.root import Documentation
 
+from .example import Example
+from .request import Request
+
 
 class Item:
 
-    def __init__(self, resource=None, title=None, docs=None, example=None):
-        logging.debug('resource')
-        logging.debug(resource)
+    def __init__(self, resources=[], title=None, docs=None):
+        logging.debug('resources')
+        logging.debug(resources)
 
-        self.resource = resource
+        self.resources = resources
+        self.resource = None
 
-        if resource is not None:
-            if title is None:
-                title = resource.display_name
-            if docs is None:
-                docs = [
-                    resource.description.html
-                ]
+        if len(resources) > 0:
+            self.resource = resources[0]
+
+        if title is None:
+            title = self.resource.display_name
 
         if title is None:
             raise ValueError(
                 'A title or resource must be given.'
             )
 
-        if docs is not None:
-            for i, doc in enumerate(docs):
-                if isinstance(doc, Documentation):
-                    docs[i] = doc.content.html
+        if docs is None:
+            docs = [resource.description.html for resource in resources]
+        for i, doc in enumerate(docs):
+            if isinstance(doc, Documentation):
+                docs[i] = doc.content.html
 
         self.title = title
         self.docs = docs
-        self.example = example
+        if self.resource is not None:
+            self.example = Example(
+                Request(
+                    self.resource.path,
+                    self.resource.method
+                )
+            )
 
     def __str__(self):
         return self.title

@@ -2,6 +2,7 @@
 
 example_docs/
 _build/
+*.sketch
 
 # Created by https://www.gitignore.io/api/macos,python,sublimetext,sass
 

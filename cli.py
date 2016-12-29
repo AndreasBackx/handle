@@ -70,20 +70,26 @@ def build(context):
 @click.option('--host', default='0.0.0.0', help='Specify host to use for livereload server.')
 @click.pass_context
 def serve(context, port, host):
+    source = context.obj['source']
+    config = context.obj['config']
+
     handle = Handle(
-        source=context.obj['source'],
-        config=context.obj['config']
+        source=source,
+        config=config
     )
     handle.build()
     logging.info('Initial files built.')
 
-    def on_update():
+    def on_update(*args, **kwargs):
         logging.info('Change detected...')
-        handle.build()
+        handle.build(*args, **kwargs)
         logging.info('Project updated.')
 
     server = Server()
     server.watch(handle.template_dir, on_update)
+    server.watch(source, lambda: on_update(update_raml=True))
+    if config is not None:
+        server.watch(config, lambda: on_update(update_raml=True))
 
     logging.info(
         'Spinning up Handle livereload server at "%s:%d"...',

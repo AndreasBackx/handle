@@ -28,11 +28,7 @@ class Handle:
             'templates',
             template
         )
-
-        self.root_node = ramlfications.parse(
-            raml=source,
-            config_file=config
-        )
+        self.update_root_node()
 
     @property
     def environment(self):
@@ -58,7 +54,13 @@ class Handle:
 
         return env
 
-    def build(self):
+    def update_root_node(self):
+        self.root_node = ramlfications.parse(
+            raml=self.source,
+            config_file=self.config
+        )
+
+    def build(self, update_raml=False):
         if os.path.exists(self.BUILD_DIR):
             shutil.rmtree(self.BUILD_DIR)
 
@@ -67,6 +69,9 @@ class Handle:
         environment = self.environment
         with open(self.BUILD_DIR + '/index.html', 'w') as fh:
             try:
+                if update_raml:
+                    self.update_root_node()
+
                 root_section = Section(
                     title=self.root_node.title,
                     docs=self.root_node.documentation
