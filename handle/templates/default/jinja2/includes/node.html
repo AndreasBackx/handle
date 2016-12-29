@@ -9,18 +9,6 @@
     {% include 'includes/parameters.html' %}
 {% endif %}
 
-{% if node.base_uri_params %}
-    {% set parameters = node.base_uri_params %}
-    {% set parameter_title = 'Base URI Parameters' %}
-    {% include 'includes/parameters.html' %}
-{% endif %}
-
-{% if node.uri_params %}
-    {% set parameters = node.uri_params %}
-    {% set parameter_title = 'URI Parameters' %}
-    {% include 'includes/parameters.html' %}
-{% endif %}
-
 {% if node.query_params %}
     {% set parameters = node.query_params %}
     {% set parameter_title = 'Query Parameters' %}

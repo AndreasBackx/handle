@@ -1,0 +1,52 @@
+{% if resource.protocols %}
+<h2>Protocols</h2>
+    <p>
+    {% for protocol in resource.protocols -%}
+        {{ protocol }}{% if not loop.last %}, {% endif %}
+    {%- endfor %}
+    </p>
+{% endif %}
+
+{% if resource.base_uri_params %}
+    {% set parameters = resource.base_uri_params %}
+    {% set parameter_title = 'Base URI Parameters' %}
+    {% include 'includes/parameters.html' %}
+{% endif %}
+
+{% if resource.uri_params %}
+    {% set parameters = resource.uri_params %}
+    {% set parameter_title = 'URI Parameters' %}
+    {% include 'includes/parameters.html' %}
+{% endif %}
+{#
+Resource types are returned without any reasonable inheritance or parent info.
+The information cannot be shown in a representable manner.
+
+{% if resource.resource_types %}
+<h2>Resource Types</h2>
+    {% for node in resource.resource_types %}
+        {% include 'includes/node.html' %}
+    {% endfor %}
+{% endif %}
+#}
+
+{% if resource.traits %}
+<h2>Traits</h2>
+    {% for node in resource.traits %}
+        {% include 'includes/node.html' %}
+    {% endfor %}
+{% endif %}
+
+{% if resource.schemas %}
+<h2>Schemas</h2>
+    {% for node in resource.schemas %}
+        {% include 'includes/node.html' %}
+    {% endfor %}
+{% endif %}
+
+{% if resource.security_schemas %}
+<h2>Security Schemes</h2>
+    {% for node in resource.security_schemas %}
+        {% include 'includes/node.html' %}
+    {% endfor %}
+{% endif %}

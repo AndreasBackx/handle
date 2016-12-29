@@ -21,12 +21,8 @@
                         {% endfor %}
                     {% endif %}
 
-                    {% if section.resource.traits %}
-                    <h2>Traits</h2>
-                        {% for node in section.resource.traits %}
-                            {% include 'includes/node.html' %}
-                        {% endfor %}
-                    {% endif %}
+                    {% set resource = section.resource %}
+                    {% include 'includes/resource.html' %}
                 </div>
             </div>
 
@@ -43,7 +39,8 @@
                             {% endfor %}
                         {% endif %}
 
-
+                        {% set resource = item.resource %}
+                        {% include 'includes/resource.html' %}
                     </div>
 
                     {% if item.resource.responses %}
