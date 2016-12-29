@@ -26,6 +26,7 @@ h2 {
 
 h3 {
     font-size: $size-large;
+    margin-top: 8px;
 }
 
 h4 {
@@ -43,6 +44,7 @@ p {
     line-height: 1.5em;
 
     a {
+        color: $primary-color;
         text-decoration: underline;
     }
 }

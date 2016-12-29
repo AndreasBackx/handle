@@ -1,0 +1,47 @@
+<tr>
+    <td>
+        <p>{{ parameter.name}}</p>
+        <p>
+            {% if parameter.min_length or parameter.minimum -%}
+                Min. {{ parameter.min_length | default(parameter.minimum) }}
+            {%- endif %}
+            {% if parameter.max_length or parameter.maximum -%}
+                Max. {{ parameter.max_length | default(parameter.maximum) }}
+            {%- endif %}
+            {% if parameter.repeat -%}
+                repeatable
+            {%- endif %}
+        </p>
+        {% if parameter.enum %}
+        <p>
+            [{% for enum in parameter.enum -%}
+                {{ enum }}{% if not loop.last %}, {% endif %}
+            {%- endfor %}]
+        </p>
+        {% endif %}
+        {% if parameter.pattern -%}
+        <p>
+            {{ parameter.pattern }}
+        </p>
+        {%- endif %}
+        {% if parameter.example -%}
+        <p>
+            {{ parameter.example }}
+        </p>
+        {%- endif %}
+        <p>
+            {{ parameter.type }}
+            {% if parameter.enum %}
+                (enum)
+            {% endif %}
+        </p>
+        {% if not parameter.required %}
+        <p>
+                optional
+        </p>
+        {% endif %}
+    </td>
+    <td>
+        {{ parameter.description | default(parameter.display_name )}}
+    </td>
+</tr>

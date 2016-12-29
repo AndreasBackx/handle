@@ -3,13 +3,28 @@
         <section class="content-section">
             <div class="content-group">
                 <div class="content-info">
-                    <h1 id="{{ section.resource.path }}">{{ section.title }}</h1>
+                    <header>
+                        <h1 id="{{ section.resource.path }}">{{ section.title }}</h1>
+                        {% if section.resource.version %}
+                        <p>Version {{ section.resource.version }}</p>
+                        {% endif %}
+                        {% if section.resource.base_uri %}
+                        <p>Base URI <a href="{{ section.resource.base_uri }}" alt="Base URI">{{ section.resource.base_uri }}</a></p>
+                        {% endif %}
+                    </header>
 
-                    {% if section.docs %}
-                        {% for doc in section.docs %}
+                    {% if section.documentation %}
+                        {% for doc in section.documentation %}
                             {% if doc %}
                             {{ doc }}
                             {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if section.resource.traits %}
+                    <h2>Traits</h2>
+                        {% for node in section.resource.traits %}
+                            {% include 'includes/node.html' %}
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -20,13 +35,15 @@
                     <div class="content-section-item">
                         <h2 id="{{ item.resource.path }}">{{ item.title }}</h2>
 
-                        {% if item.docs %}
-                            {% for doc in item.docs %}
+                        {% if item.documentation %}
+                            {% for doc in item.documentation %}
                                 {% if doc %}
                                 {{ doc }}
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
+
+
                     </div>
 
                     {% if item.resource.responses %}

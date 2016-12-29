@@ -1,0 +1,34 @@
+<h3>{{ node.name | capitalize }}</h3>
+{% if node.usage %}
+<p>{{ node.usage }}</p>
+{% endif %}
+
+{% if node.headers %}
+    {% set parameters = node.headers %}
+    {% set parameter_title = 'Headers' %}
+    {% include 'includes/parameters.html' %}
+{% endif %}
+
+{% if node.base_uri_params %}
+    {% set parameters = node.base_uri_params %}
+    {% set parameter_title = 'Base URI Parameters' %}
+    {% include 'includes/parameters.html' %}
+{% endif %}
+
+{% if node.uri_params %}
+    {% set parameters = node.uri_params %}
+    {% set parameter_title = 'URI Parameters' %}
+    {% include 'includes/parameters.html' %}
+{% endif %}
+
+{% if node.query_params %}
+    {% set parameters = node.query_params %}
+    {% set parameter_title = 'Query Parameters' %}
+    {% include 'includes/parameters.html' %}
+{% endif %}
+
+{% if node.form_params %}
+    {% set parameters = node.form_params %}
+    {% set parameter_title = 'Form Parameters' %}
+    {% include 'includes/parameters.html' %}
+{% endif %}

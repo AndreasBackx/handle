@@ -1,5 +1,7 @@
 from collections import defaultdict
 
+from ramlfications.models.raml import BaseRootNode
+
 from .item import Item
 
 
@@ -14,8 +16,10 @@ class Section(Item):
             child_resources = []
 
             if self.resource is not None:
+                resources = self.resource.resources if isinstance(
+                    self.resource, BaseRootNode) else self.resource.root.resources
                 child_resources = [
-                    resource for resource in self.resource.root.resources
+                    resource for resource in resources
                     if resource.parent == self.resource
                 ]
 

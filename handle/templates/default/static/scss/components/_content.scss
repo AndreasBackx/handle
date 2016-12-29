@@ -31,8 +31,53 @@
                 min-width: $content-width;
                 max-width: $content-width;
 
-                * {
-                    white-space: wrap;
+                header {
+                    p {
+                        color: $grey-darker;
+                        font-weight: $weight-bold;
+                    }
+                }
+
+                table {
+                    thead {
+                        text-transform: uppercase;
+                        color: $grey;
+                        border-bottom: 1px solid $divider-color;
+
+                        td {
+                            padding: 16px 0;
+                            white-space: nowrap;
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                padding: 16px;
+
+                                &:first-child {
+                                    text-align: right;
+                                    min-width: 100px;
+                                    width: 35%;
+
+                                    p {
+                                        padding: 0;
+                                        font-weight: $weight-light;
+                                        color: $grey;
+
+                                        &:first-child {
+                                            font-weight: $weight-bold;
+                                            color: $grey-darker;
+                                        }
+                                    }
+                                }
+
+                                &:last-child {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -75,7 +120,7 @@
 
                         .highlight {
                             pre {
-                                padding: 16px;
+                                padding: 16px 32px;
                                 font-family: monospace;
                                 white-space: pre-wrap;
                                 word-break: break-all;

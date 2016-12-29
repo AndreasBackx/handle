@@ -80,8 +80,7 @@ class Handle:
                     self.update_root_node()
 
                 root_section = Section(
-                    title=self.root_node.title,
-                    docs=self.root_node.documentation
+                    resource=self.root_node
                 )
 
                 sections = [root_section]

@@ -1,0 +1,12 @@
+<table>
+    <thead>
+        <tr>
+            <td>{{ parameter_title }}</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for parameter in parameters %}
+            {% include 'includes/parameter.html' %}
+        {% endfor %}
+    </tbody>
+</table>
