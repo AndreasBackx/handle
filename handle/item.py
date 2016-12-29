@@ -9,9 +9,6 @@ from .request import Request
 class Item:
 
     def __init__(self, resources=[], title=None, docs=None):
-        logging.debug('resources')
-        logging.debug(resources)
-
         self.resources = resources
         self.resource = None
 

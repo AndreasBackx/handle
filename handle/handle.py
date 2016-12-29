@@ -6,6 +6,7 @@ import ramlfications
 from jac import CompressorExtension
 from jinja2 import Environment, FileSystemLoader
 
+from .filters import highlight
 from .section import Section
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -40,6 +41,12 @@ class Handle:
             loader=FileSystemLoader(jinja_dir),
             trim_blocks=True,
             extensions=[CompressorExtension]
+        )
+        env.filters['highlight'] = highlight
+        env.globals.update(
+            dir=dir,
+            type=type,
+            str=str
         )
         env.compressor_output_dir = os.path.join(
             self.BUILD_DIR,
@@ -91,6 +98,7 @@ class Handle:
                     sections=sections
                 )
             except:
+                traceback.print_exc()
                 output = '<pre>{traceback}</pre>'.format(
                     traceback=traceback.format_exc().replace('\\n', '<br/>')
                 )

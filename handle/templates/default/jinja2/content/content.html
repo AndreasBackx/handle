@@ -29,20 +29,24 @@
                         {% endif %}
                     </div>
 
-                    {% if item.example %}
-                        <div class="content-example">
-                            {% if item.example.request %}
-                                <div class="example-request">
-                                    <p>Example request:</p>
-                                    <div class="codeblock">
-                                        <div class="codeblock-header">
-                                            <span class="codeblock-method">{{ item.example.request.method }}</span>
-                                            <span class="codeblock-path">{{ item.example.request.path }}</span>
-                                        </div>
-                                        <pre>{{ item.example.request }}</pre>
+                    {% if item.resource.responses %}
+                        <div class="examples">
+                        {% for response in item.resource.responses %}
+                            {% if response.body and 200 <= response.code < 300 %}
+                            <div class="example response">
+                                <p>Example response ({{ response.code }}):</p>
+                                <div class="codeblock">
+                                    <div class="codeblock-header">
+                                        <span class="codeblock-method">{{ response.method | upper }}</span>
+                                        <span class="codeblock-path">{{ item.resource.path }}</span>
                                     </div>
+                                    {% for body in response.body -%}
+                                        {{ body.example | highlight(body.mime_type) }}
+                                    {%- endfor %}
                                 </div>
+                            </div>
                             {% endif %}
+                        {% endfor %}
                         </div>
                     {% endif %}
                 </div>

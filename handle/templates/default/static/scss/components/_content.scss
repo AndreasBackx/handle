@@ -18,7 +18,7 @@
                 }
             }
 
-            .content-info, .content-section-item, .content-example {
+            .content-info, .content-section-item, .examples {
                 padding: 32px;
                 display: table-cell;
                 box-sizing: border-box;
@@ -45,35 +45,42 @@
             }
 
             // Right part
-            .content-example {
-                color: $grey-light;
-                font-weight: $weight-light;
+            .examples {
                 width: 100%;
 
-                .codeblock {
-                    background: $grey-darker;
-                    border-radius: 2px;
+                .example {
+                    color: $grey-light;
+                    font-weight: $weight-light;
 
-                    .codeblock-header {
-                        height: 40px;
-                        white-space: normal;
-                        word-break: break-all;
-                        background: $grey-black;
-                        border-top-left-radius: 2px;
-                        border-top-right-radius: 2px;
-                        padding:  0 16px;
-                        line-height: 40px;
+                    .codeblock {
+                        background: $grey-darker;
+                        border-radius: 2px;
 
-                        .codeblock-method {}
+                        .codeblock-header {
+                            height: 40px;
+                            white-space: normal;
+                            word-break: break-all;
+                            background: $grey-black;
+                            border-top-left-radius: 2px;
+                            border-top-right-radius: 2px;
+                            padding: 0 16px;
+                            line-height: 40px;
+                            text-overflow: ellipsis;
+                            overflow-x: hidden;
 
-                        .codeblock-path {}
-                    }
+                            .codeblock-method {}
 
-                    pre {
-                        font-family: monospace;
-                        white-space: normal;
-                        word-break: break-all;
-                        padding: 16px;
+                            .codeblock-path {}
+                        }
+
+                        .highlight {
+                            pre {
+                                padding: 16px;
+                                font-family: monospace;
+                                white-space: pre-wrap;
+                                word-break: break-all;
+                            }
+                        }
                     }
                 }
             }
