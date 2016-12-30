@@ -44,9 +44,8 @@ The information cannot be shown in a representable manner.
     {% endfor %}
 {% endif %}
 
-{% if resource.security_schemas %}
-<h2>Security Schemes</h2>
-    {% for node in resource.security_schemas %}
-        {% include 'includes/node.html' %}
-    {% endfor %}
+{% if resource.security_schemes %}
+    {% set parameters = resource.security_schemes %}
+    {% set parameter_title = 'Security Schemes' %}
+    {% include 'includes/parameters.html' %}
 {% endif %}

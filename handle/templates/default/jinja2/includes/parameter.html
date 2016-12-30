@@ -45,3 +45,15 @@
         {{ parameter.description | default(parameter.display_name )}}
     </td>
 </tr>
+{% if parameter.settings %}
+    {% for setting, url in parameter.settings.items() %}
+    <tr>
+        <td>
+            <p>{{ setting }}</p>
+        </td>
+        <td>
+            <p><a href="{{ url }}" title="{{ setting }}">{{ url }}</a></p>
+        </td>
+    </tr>
+    {% endfor %}
+{% endif %}
