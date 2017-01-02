@@ -18,17 +18,6 @@
     {% set parameter_title = 'URI Parameters' %}
     {% include 'includes/parameters.html' %}
 {% endif %}
-{#
-Resource types are returned without any reasonable inheritance or parent info.
-The information cannot be shown in a representable manner.
-
-{% if resource.resource_types %}
-<h2>Resource Types</h2>
-    {% for node in resource.resource_types %}
-        {% include 'includes/node.html' %}
-    {% endfor %}
-{% endif %}
-#}
 
 {% if resource.traits %}
 <h2>Traits</h2>
