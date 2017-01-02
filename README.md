@@ -2,9 +2,8 @@ A RAML documentation generator that generates HTML from RAML documentation files
 
 # Installation
 
-	pip install handle --process-dependency-links
-
-Dependency links are currently deprecated but [won't be removed until a replacement is available](https://github.com/pypa/pip/issues/2621). Until then, this is the easiest way to install handle.
+	pip install -e git+git://github.com/spotify/ramlfications.git@v0.2.0-dev#egg=ramlfications
+	pip install handle
 
 # How to use
 
