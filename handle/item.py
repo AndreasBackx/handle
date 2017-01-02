@@ -20,7 +20,8 @@ class Item:
 
         documentation = getattr(self.resource, 'documentation', None)
         if documentation is None:
-            documentation = [resource.description.html for resource in resources if hasattr(resource, 'description')]
+            documentation = [resource.description.html for resource in resources if hasattr(
+                resource, 'description')]
         for i, doc in enumerate(documentation):
             if isinstance(doc, Documentation):
                 documentation[i] = doc.content.html

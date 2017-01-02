@@ -1,3 +1,0 @@
--r requirements.in
-
-pip-tools==1.7.0
