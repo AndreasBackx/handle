@@ -20,7 +20,7 @@ setup(
         'click==6.6',
         'colorlog==2.7.0',
         'jac==0.15.3',
-        'jinja2==2.8',
+        'jinja2==2.11.3',
         'livereload==2.4.1',
         'pygments==2.1.3',
         'ramlfications==0.2.0.dev2'
